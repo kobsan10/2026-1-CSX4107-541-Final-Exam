@@ -9,7 +9,7 @@ Online Course Service: Next.js API backend, React (Vite) frontend, MongoDB.
 
 ## Deployed URLs
 
-- **Frontend:** <!-- TODO: https://<frontend>.vercel.app -->
+- **Frontend:** https://2026-1-csx-4107-541-final-exam-3qsp.vercel.app
 - **Backend:** https://2026-1-csx-4107-541-final-exam.vercel.app
 
 ### Deployment notes (Vercel)
