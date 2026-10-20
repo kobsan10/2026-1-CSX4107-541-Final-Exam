@@ -10,7 +10,12 @@ Online Course Service: Next.js API backend, React (Vite) frontend, MongoDB.
 ## Deployed URLs
 
 - **Frontend:** <!-- TODO: https://<frontend>.vercel.app -->
-- **Backend:** <!-- TODO: https://<backend>.vercel.app -->
+- **Backend:** https://2026-1-csx-4107-541-final-exam.vercel.app
+
+### Deployment notes (Vercel)
+
+- **Backend project** (Root Directory `next-backend`) env vars: `MONGODB_URI`, `DB_NAME`, `JWT_SECRET`, `FRONTEND_URL` (the frontend domain).
+- **Frontend project** (Root Directory `react-frontend`): [`react-frontend/vercel.json`](react-frontend/vercel.json) forwards `/api/*` to the backend. The browser therefore calls the API on the frontend's own domain, and the httpOnly auth cookie works in every browser, including Safari and Incognito, which block cross-site cookies. `VITE_API_URL` is left unset in production; for local development it is `http://localhost:3000`.
 
 ## Test Credentials
 

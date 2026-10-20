@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://2026-1-csx-4107-541-final-exam.vercel.app/api/:path*"
+    }
+  ]
+}
