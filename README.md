@@ -4,8 +4,8 @@ Online Course Service: Next.js API backend, React (Vite) frontend, MongoDB.
 
 ## Student Information
 
-- **Student Name:** <!-- TODO -->
-- **Student ID:** <!-- TODO -->
+- **Student Name:** Bhone Pyae San
+- **Student ID:** 6722178
 
 ## Deployed URLs
 
