@@ -19,6 +19,9 @@ export function verifyJWT(req) {
 }
 
 export function signJWT(user) {
+  if (!JWT_SECRET) {
+    throw new Error("JWT_SECRET is not set (check the environment variables)");
+  }
   return jwt.sign(
     {
       id: user._id.toString(),
