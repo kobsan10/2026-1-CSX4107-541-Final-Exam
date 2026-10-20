@@ -1,0 +1,4 @@
+# Local editor / assistant files (not part of the submission)
+/CLAUDE.md
+/.vscode/
+.DS_Store

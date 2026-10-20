@@ -5,9 +5,15 @@ import {
   X_HEADER_USER_EMAIL,
   X_HEADER_USER_ID,
   X_HEADER_USER_NAME,
+  X_HEADER_USER_ROLE,
 } from "./lib/constant";
 
 export function proxy(request) {
+  // CORS preflight requests never carry cookies; answer them directly
+  if (request.method === "OPTIONS") {
+    return new NextResponse(null, { status: 204, headers: corsHeaders });
+  }
+
   const user = verifyJWT(request);
 
   if (!user) {
@@ -26,6 +32,7 @@ export function proxy(request) {
   requestHeaders.set(X_HEADER_USER_ID, user.id);
   requestHeaders.set(X_HEADER_USER_EMAIL, user.email);
   requestHeaders.set(X_HEADER_USER_NAME, user.username);
+  requestHeaders.set(X_HEADER_USER_ROLE, user.role);
 
   return NextResponse.next({
     request: {
@@ -35,5 +42,5 @@ export function proxy(request) {
 }
 
 export const config = {
-  matcher: [],
+  matcher: ["/api/course/:path*", "/api/user/:path*"],
 };

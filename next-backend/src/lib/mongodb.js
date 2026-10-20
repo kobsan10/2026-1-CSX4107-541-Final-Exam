@@ -12,14 +12,14 @@ export function getClientPromise() {
       "Please add your Mongo URI to .env.local or set MONGODB_URI env variable",
     );
   }
-  if (process.env.NODE_ENV === "development") {
-    if (!globalClientPromise) {
-      const client = new MongoClient(uri, options);
-      globalClientPromise = client.connect();
-    }
-    return globalClientPromise;
-  } else {
+  // Reuse one connection per server instance (also on Vercel, where
+  // a new client per request would quickly exhaust Atlas connections)
+  if (!globalClientPromise) {
     const client = new MongoClient(uri, options);
-    return client.connect();
+    globalClientPromise = client.connect().catch((err) => {
+      globalClientPromise = undefined;
+      throw err;
+    });
   }
+  return globalClientPromise;
 }
